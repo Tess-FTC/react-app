@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Counters from "./components/counters";
 import NavBar from "./components/navbar";
+import Cards from './components/cards';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <NavBar />
       <main className="container">
         <Counters/> 
+        <Cards />
       </main>
     </React.Fragment>
   );

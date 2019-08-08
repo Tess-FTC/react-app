@@ -12,7 +12,7 @@ class Counters extends Component {
   };
   
   handleDelete = (counterId) => {
-    console.log("counter id", counterId);
+    // console.log("counter id", counterId);
     const counters = this.state.counters.filter( counter => counter.id !== counterId);
     this.setState({
       counters
@@ -23,10 +23,10 @@ class Counters extends Component {
     
     const newcounters = [...this.state.counters];
     const index = newcounters.indexOf(counter);
-    console.log(index);
+    // console.log(index);
     newcounters[index] = {...counter};
     newcounters[index].value++;
-    console.log("Increment Click", newcounters, index);
+    // console.log("Increment Click", newcounters, index);
     this.setState({
       counters: newcounters
     });
