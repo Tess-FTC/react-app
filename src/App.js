@@ -3,15 +3,20 @@ import './App.css';
 import NavBar from "./components/navbar";
 import Cards from './components/cards';
 import Sorting from './components/sorting';
+import Loading from './components/loading';
+
+// library
 import axios from 'axios';
 
 class App extends Component {
   state = { 
     title:"", 
-    cards: []
+    backgroundColor:"",
+    cards: [],
+    isLoading: true
    }
   componentDidMount() {
-		this.getTrip();
+    this.getTrip();
 	}
 	
 	// Get Trip from API
@@ -20,7 +25,10 @@ class App extends Component {
 			const response =  await axios.get('https://canadavacations.com/wp-json/wp/v2/find-trips/');
 			console.log(response.data);
 			const cards = response.data;
-			this.setState({ cards })
+			this.setState({ 
+        cards,
+        isLoading: false
+      })
 		} catch(error) {
 			console.error(error);
 		}
@@ -51,21 +59,24 @@ class App extends Component {
       });
     }
   }
-  
+
   render() { 
     console.log(this.state.cards);
+
     return ( 
       <React.Fragment>
-      <NavBar title={"Header"}/>
-      <button onClick={this.handlePriceHighLow}>HighLow Button</button>
-      <button onClick={this.handlePriceLowHigh}>LowHigh Button</button>
+      <NavBar 
+        title={"Header"}
+        backgroundColor={"#e42f3a"}/>
       <main className="container">
         <Sorting
           handleSelect={this.handleSelect} 
           />
-        <Cards cards={this.state.cards}/>
+        {this.state.isLoading ? <Loading /> : <Cards cards={this.state.cards}/>}
       </main>
-      <NavBar title={"Footer"}/>
+      <NavBar 
+        title={"Footer"}
+        backgroundColor={"#2f2632"}/>
     </React.Fragment>
      );
   }

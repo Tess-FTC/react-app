@@ -4,8 +4,8 @@ class NavBar extends Component {
   state = {  }
   render() { 
     return ( 
-        <nav className="navbar navbar-light bg-light">
-          <a className="navbar-brand" href="something">{this.props.title}</a>
+        <nav className="navbar" style={{ backgroundColor:this.props.backgroundColor, height: 100 }}>
+          <a className="navbar-brand" href="something" style={{ color: "#fff" }}>{this.props.title}</a>
         </nav>
       );
   }
