@@ -1,19 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import Counters from "./components/counters";
 import NavBar from "./components/navbar";
 import Cards from './components/cards';
 
-function App() {
-  return (
-    <React.Fragment>
-      <NavBar />
+
+class App extends Component {
+  state = { 
+    title:""
+   }
+  render() { 
+    return ( 
+      <React.Fragment>
+      <NavBar title={"Header"}/>
       <main className="container">
-        <Counters/> 
         <Cards />
       </main>
+      <NavBar title={"Footer"}/>
     </React.Fragment>
-  );
+     );
+  }
 }
-
+ 
 export default App;

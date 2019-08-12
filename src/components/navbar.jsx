@@ -5,7 +5,7 @@ class NavBar extends Component {
   render() { 
     return ( 
         <nav className="navbar navbar-light bg-light">
-          <a className="navbar-brand" href="something">Navbar</a>
+          <a className="navbar-brand" href="something">{this.props.title}</a>
         </nav>
       );
   }
